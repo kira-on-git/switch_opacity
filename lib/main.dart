@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+//import 'my_animated_opacity.dart';
 import 'opacity_widget.dart';
+//import 'dart:async';
 
-void main() {
+void main() async {
   runApp(const MyApp());
 }
 

@@ -1,5 +1,7 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
-import 'dart:async';
+//import 'dart:async';
 
 class OpacityWidget extends StatefulWidget {
   const OpacityWidget({super.key});
@@ -9,67 +11,44 @@ class OpacityWidget extends StatefulWidget {
 }
 
 class _OpacityWidgetState extends State<OpacityWidget> {
-  bool _visible = true;
+  double _opacity = 1.0;
+
   void makeUnvisible() {
-    setState(() {
-      _visible = !_visible;
-    });
+    setState(() => _opacity = _opacity == 0.0 ? 1.0 : 0.0);
+    print('State changed');
   }
 
   @override
   Widget build(BuildContext context) {
+    print('build Element tree');
+    print('_opacity = $_opacity');
     return Center(
-      child: Container(
-        color: Colors.white,
-        width: double.infinity,
-        child: Column(
-          //crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            const SizedBox(height: 50),
-            AnimatedOpacity(
-              opacity: _visible ? 1.0 : 0.0,
-              duration: const Duration(seconds: 3),
-              curve: Curves.linear,
-              child: Container(
-                color: Colors.green,
-                height: 100,
-                width: 100,
-              ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          const SizedBox(height: 50),
+          AnimatedOpacity(
+            opacity: _opacity,
+            duration: const Duration(seconds: 3),
+            alwaysIncludeSemantics: true,
+            curve: Curves.linear,
+            child: Container(
+              color: Colors.green,
+              height: 100,
+              width: 100,
             ),
-            const SizedBox(height: 50),
-            ElevatedButton(
-                onPressed: makeUnvisible, child: const Icon(Icons.add)),
-            const SizedBox(height: 50),
-          ],
-        ),
+          ),
+          const SizedBox(height: 50),
+          ElevatedButton(
+              onPressed: () {
+                print('*****----Button pressed----*****');
+                makeUnvisible();
+                print('new _opacity = $_opacity');
+              },
+              child: const Text('Fade Out')),
+          const SizedBox(height: 50),
+        ],
       ),
     );
   }
-}
-
-void main() async {
-  // Zusatz: async
-
-  print('warte bis opacity 0 wird ${resetAdvice()}');
-
-  String advice = await resetAdvice();
-  // wenn advice != null
-  print(advice);
-
-  await waitForMe();
-  // in 5 secunden 'I was waiting here'
-  print('I was waiting here: $advice');
-}
-
-Future<String> resetAdvice() async {
-  return 'etwas';
-}
-
-Future waitForMe() async {
-  print('Started.');
-  return Future.delayed(Duration(seconds: 5), () {
-    //advice = 'default';
-    print('Done');
-  });
 }
