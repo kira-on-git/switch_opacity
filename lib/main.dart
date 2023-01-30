@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'opacity_widget.dart';
 //import 'dart:async';
 
-void main() async {
+void main() {
   runApp(const MyApp());
 }
 
