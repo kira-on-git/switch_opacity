@@ -39,16 +39,10 @@ class _OpacityWidgetState extends State<OpacityWidget> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           const SizedBox(height: 50),
-          AnimatedOpacity(
-            opacity: _opacity,
-            duration: Duration(seconds: _duration),
-            alwaysIncludeSemantics: true,
-            curve: Curves.linear,
-            child: Container(
-              color: Colors.green,
-              height: 100,
-              width: 100,
-            ),
+          Container(
+            color: Colors.green,
+            height: 100,
+            width: 100,
           ),
           const SizedBox(height: 50),
           ElevatedButton(
