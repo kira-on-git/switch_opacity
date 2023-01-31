@@ -5,6 +5,8 @@ import 'opacity_timer.dart';
 import 'opacity_widget.dart';
 import 'dart:async';
 
+import 'visibility_future.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Switch Opacity',
-      home: Scaffold(body: OpacityWidget()),
+      home: Scaffold(body: VisibilityWidget()),
     );
   }
 }
