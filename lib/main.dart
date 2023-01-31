@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 //import 'my_animated_opacity.dart';
-import 'animated_switcher.dart';
+//import 'animated_switcher.dart';
+import 'opacity_timer.dart';
 import 'opacity_widget.dart';
-//import 'dart:async';
+import 'dart:async';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Switch Opacity',
-      home: MyAnimatedSwitcher(),
+      home: Scaffold(body: OpacityWidget()),
     );
   }
 }
